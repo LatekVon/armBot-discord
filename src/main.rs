@@ -12,7 +12,7 @@ pub use config_manager::*;
 
 ///////////////////////
 
-const TOKEN: &str = "ODAwOTkyNTEzNzQxMDI5NDE4.YAaMaA.mpVbNlpO91Bl8S2ZjXI08emVz2M";
+const TOKEN: &str = "TOKEN HERE"; //TODO: move to external text file
 
 ///////////////////////
 
