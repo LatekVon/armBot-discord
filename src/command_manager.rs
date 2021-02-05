@@ -7,18 +7,9 @@ use std::io::*;
 use std::path::Path;
 
 
-
-mod commands_common;
-pub use commands_common::*;
-
-mod commands_poll;
-pub use commands_poll::*;
-
-
-
-/////////////////////////////////////////////////////
-pub static mut PREFIX: char = '+'; //unsafe! Too bad. 
-/////////////////////////////////////////////////////
+pub use super::commands_common::*;
+pub use super::commands_poll::*;
+pub use super::config_manager::*;
 
 pub fn parse_command(ctx: Context, msg: Message){
     println!("Received: '{}' on channel: '{}'", msg.content, msg.channel_id);
@@ -40,7 +31,7 @@ pub fn parse_command(ctx: Context, msg: Message){
         "prefix" => c_setprefix(ctx, msg, args),
         "source" => c_sourcefiles(ctx, msg),
         
-        "poll" => c_poll(ctx, msg, args); 
+        "poll" => c_poll(ctx, msg, args), 
 
         _ => c_error_notfound(ctx, msg)
     }

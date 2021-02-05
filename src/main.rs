@@ -7,9 +7,11 @@ use serenity::model::channel::Message;
 mod command_manager;
 use command_manager::*;
 
-//mod config_manager;
-//use config_manager::*;
+mod config_manager;
+use config_manager::*;
 
+mod commands_common;
+mod commands_poll;
 
 ///////////////////////
 

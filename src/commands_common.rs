@@ -6,8 +6,7 @@ use serenity::model::channel::Message;
 use std::io::*;
 use std::path::Path;
 
-//pub mod config_manager;
-
+pub use super::config_manager::*;
 
 //to be moved to config file, and then to txt file
 
@@ -31,12 +30,20 @@ pub fn c_help(ctx: Context, msg: Message){
     let msg_send = String::from("```c++
 Dopiero tworze tego bota, ale już coś działa.
 Tutaj daje komendy, które już można używać:
-            
+    
+    syntax - pomocna wiadomość prezentująca
+             użycie znaków specjalnych
+
     help - pokazuje informacje o bocie
     info - pokazuje szczegółowe informacje
            o wybranej komendzie
     prefix - zmienia akutalny prefix na 
              dowolny inny o długości 1 litery
+    source - wyślij kod źródłowy
+    
+    poll - [create|remove|setchannel|rmchannel]
+        create - [M:D:H:M:S|REMAINING:TIME, TITLE]
+                  
     ```");
     
     if let Err(why) = msg.channel_id.say(ctx.http, msg_send){
@@ -44,6 +51,18 @@ Tutaj daje komendy, które już można używać:
     }
 }
 
+//--- SYNTAX HELP ---
+pub fn c_syntax(ctx: Context, msg: Message, args: Vec<&str>){
+    let mut msg_send = String::from("Słowa kluczowe ``[ , | * $ ]``");
+    msg_send.push_str("```rust
+
+
+```");
+    if let Err(why) = msg.channel_id.say(ctx.http, msg_send){
+        println!("Received error '{}' while sending a message", why);
+    }
+
+}
 //--- INFO ---
 pub fn c_info(ctx: Context, msg: Message, args: Vec<&str>){
     
@@ -53,6 +72,7 @@ pub fn c_info(ctx: Context, msg: Message, args: Vec<&str>){
         msg_send.push_str(":arrow_forward: ");
         
         match args[0] {
+            "syntax" => c_syntax(ctx, msg, args),
             "help" => msg_send.push_str("help ``Komenda prezentująca naszego nowego bota``"),
             "info" => msg_send.push_str("info ``Co jest z tobą nie tak?``"),
             "prefix" => msg_send.push_str("prefix ``Zmienia przedrostek komend``"),
