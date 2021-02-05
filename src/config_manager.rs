@@ -1,6 +1,6 @@
 //////////////////////////
 
-pub static PREFIX: char = '+';
+//pub static PREFIX: char = '+';
 
 //////////////////////////
 
