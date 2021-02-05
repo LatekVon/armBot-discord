@@ -1,0 +1,1 @@
+/home/armado/Pulpit/backupPROG/rust/armbot/target/debug/armbot: /home/armado/Pulpit/backupPROG/rust/armbot/src/command_manager.rs /home/armado/Pulpit/backupPROG/rust/armbot/src/config_manager.rs /home/armado/Pulpit/backupPROG/rust/armbot/src/main.rs
